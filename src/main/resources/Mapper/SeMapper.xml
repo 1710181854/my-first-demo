@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.importexcel.dao.SeckillDao">
+    <insert id="insertSeckill" parameterType="com.example.importexcel.Entity.DemoExcel" >
+  insert into seckill values (#{seckill_Id},#{stringname},#{stringnumber},#{startTime},#{endTime},#{createTime})
+</insert>
+    <!--插入到NVR表中-->
+    <insert id="insertNVR" parameterType="com.example.importexcel.Entity.Iacs_Host_Nvr">
+      insert into iacs_host_nvr values(#{id},#{code},#{ip},#{mac},#{account},#{password},#{port},#{channels},#{factory},#{type},#{version},#{address},#{image},#{sortno},#{status},#{flag},#{record_person},sysdate,#{record_depart},#{remark},#{record_people_id},#{modify_people_id},#{modify_people_name},sysdate,#{record_people_name})
+    </insert>
+    <!--到iacs_system.sys_dict中去查找-->
+    <select id="seleNVR" parameterType="string" resultType="string">
+       select code from iacs_system.sys_dict where field='NVR_TYPE' and code_value=#{code_value}
+    </select>
+    <!--根据从excel表格读出的主机编号查出主机的house_host_id-->
+    <select id="seleHouse_host_id" parameterType="string" resultType="string">
+        select id from iacs_house_host where HOST_SN=#{host_sn}
+    </select>
+    <!--根据NVR的ip地址确定NVR主键-->
+    <select id="seleNvr_id" parameterType="string" resultType="string">
+        select id from IACS_HOST_NVR where ip=#{ip}
+    </select>
+    <!--根据IPC_POSITION到数据字典表中查出code-->
+    <select id="seleNvrByIPC_POSITION" parameterType="string" resultType="string">
+       select code from iacs_system.sys_dict where field='IPC_POSITION' and code_value=#{code_value}
+    </select>
+    <!--将Iacs_host_ipc插入到Iacs_host_ipc表中-->
+    <insert id="insertIPC" parameterType="com.example.importexcel.Entity.Iacs_host_ipc">
+        insert into iacs_host_ipc values(#{ID},#{HOUSE_HOST_ID},#{NVR_ID},#{CODE},#{IP},#{MAC},#{CHANNEL},#{TYPE},#{FACTORY},#{VERSION},#{POSITION},#{ADDRESS},#{IMAGE},#{SORTNO},#{STATUS},#{FLAG},#{RECORD_PERSON},sysdate,#{RECORD_DEPART},#{REMARK},#{RECORD_PEOPLE_ID},#{MODIFY_PEOPLE_ID},#{MODIFY_PEOPLE_NAME},#{MODIFY_TIME},#{RECORD_PEOPLE_NAME},#{ACCOUNT},#{PASSWORD},#{PORT},#{NVR})
+    </insert>
+    <!--根据code去模糊查询得到出现的次数-->
+    <select id="inserCount" parameterType="string" resultType="int">
+        select count(1) from IACS_HOST_IPC where code like concat(#{code},'-%')
+    </select>
+    <!--判断这个code是否存在-->
+    <select id="inserIsNoCode" parameterType="string" resultType="string">
+        select id from IACS_HOST_IPC where code=#{code}
+    </select>
+</mapper>

@@ -1,0 +1,24 @@
+server:
+  port:  8080
+  servlet:
+    context-path: /
+  tomcat:
+    uri-encoding: utf-8
+mybatis:
+  mapper-locations: classpath:Mapper/*Mapper.xml
+  type-aliases-package:  com.example.importexcel.Entity
+  config-location: classpath:mybatis-config.xml
+spring:
+  datasource:
+    max-active: 20
+    max-idle: 8
+    min-idle: 8
+    initial-size: 10
+    wait_timeout: 86400
+    interactive_timeout: 7200
+    username: iacs_info
+    password: iacs_info
+    url: jdbc:oracle:thin:@10.220.47.249:1521:orcl
+    driver-class-name: oracle.jdbc.OracleDriver
+  thymeleaf:
+    cache: false

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/Excel/importExcel2}" enctype="multipart/form-data" method="post">
+    <input type="file" name="file"/><p></p>
+    <select name="filename">
+        <option th:value="NVR">NVR</option>
+        <option th:value="IPC">IPC</option>
+    </select>
+    <p></p>
+    <button type="submit">开始导入</button>
+    </form>
+</body>
+</html>
