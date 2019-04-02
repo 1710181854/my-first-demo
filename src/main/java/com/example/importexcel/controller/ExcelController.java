@@ -43,8 +43,8 @@ private Insert is;
         Person p2 = new Person("1","2","3");
         personList.add(p1);
         personList.add(p2);
-        System.out.println("冲突3");
-        System.out.println("冲突4");
+        System.out.println("冲突31");
+        System.out.println("冲突41");
         ExcelUtiles.exportExcel(personList,"","1111",Person.class,"海贼王.xls",false,response);
         return  new JsonResult();
     }
