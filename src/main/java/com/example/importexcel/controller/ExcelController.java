@@ -43,7 +43,7 @@ private Insert is;
         Person p2 = new Person("1","2","3");
         personList.add(p1);
         personList.add(p2);
-
+        System.out.print("垃圾。。。");
 
 
 
