@@ -42,10 +42,10 @@ private Insert is;
         Person p1 = new Person("姓名","年龄","性别");
         Person p2 = new Person("1","2","3");
         personList.add(p1);
-        personList.add(p2);
-        System.out.println("呵呵呵呵呵呵呵呵.......？？？");
+        personList.add(p2)
+
         System.out.println("没想到吧我又回来了.......？？？");
-        System.out.println("废物垃圾3455667");
+
         ExcelUtiles.exportExcel(personList,"","1111",Person.class,"海贼王.xls",false,response);
         return  new JsonResult();
     }
