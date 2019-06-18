@@ -4,7 +4,7 @@ import com.example.importexcel.Entity.DemoExcel;
 import com.example.importexcel.Entity.Iacs_Host_Nvr;
 import com.example.importexcel.Entity.Iacs_host_ipc;
 import org.apache.ibatis.annotations.Mapper;
-
+//修改在2019年6月18日
 @Mapper
 public interface SeckillDao {
     //将数据插入到数据库中去
