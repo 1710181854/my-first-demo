@@ -1,5 +1,5 @@
 package com.example.importexcel;
-//远程直接修改
+//远程直接修改，冲突远程
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
